@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Solr managed schema - automatically generated - DO NOT EDIT -->
+<schema name="utopian-post" version="1.6">
+  <uniqueKey>id</uniqueKey>
+  <fieldType name="booleans" class="solr.BoolField" sortMissingLast="true"/>
+  <fieldType name="date" class="solr.TrieDateField" omitNorms="true" sortMissingLast="true"/>
+  <fieldType name="int" class="solr.TrieIntField" omitNorms="true"/>
+  <fieldType name="long" class="solr.TrieLongField" omitNorms="true"/>
+  <fieldType name="string" class="solr.StrField" sortMissingLast="true"/>
+  <fieldType name="tdates" class="solr.TrieDateField" positionIncrementGap="0" precisionStep="0"/>
+  <fieldType name="tdoubles" class="solr.TrieLongField" positionIncrementGap="0" precisionStep="8"/>
+  <fieldType name="text_simple" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="tlongs" class="solr.TrieLongField" positionIncrementGap="0" precisionStep="8"/>
+  <field name="Body" type="text_simple" indexed="true" stored="true"/>
+  <field name="Title" type="text_simple" multiValued="true" indexed="true" stored="true"/>
+  <field name="_version_" type="string" indexed="true" stored="true"/>
+  <field name="id" type="string" indexed="true" stored="true"/>
+  <field name="text" type="text_simple" multiValued="true" indexed="true" stored="false"/>
+  <copyField source="Body" dest="text"/>
+  <copyField source="Title" dest="text"/>
+</schema>
